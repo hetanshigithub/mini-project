@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<title>Animated Clock</title>
+	<link rel="stylesheet" type="text/css" href="clk.css">
+	<link href='https://fonts.googleapis.com/css?family=Actor' rel='stylesheet'>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		var seconds = new Date().getSeconds();
+		var sdegree = seconds * 6;
+		var mins = new Date().getMinutes();
+		var hours = new Date().getHours();
+		var mdegree = mins * 6;
+		var hdegree = hours * 30 + (mins / 2);
+		var currentTime = 0;
+		var currentDeg_seconds = sdegree;
+		var currentDeg_minute = mdegree;
+		var currentDeg_hour = hdegree;
+		var divide = 32;
+		var time = 1000/divide;
+		var increase_seconds = 6/divide;
+		var increase_minute = 0.1/divide;
+		var increase_hour = 0.00166/divide;
+		
+		$(document).ready(function() {
+			
+		
+		var int=self.setInterval(function(){clock()},time);
+		function clock() {
+			
+			var d=new Date();
+			var t=d.toLocaleTimeString();
+			$(".time").html(t);
+		  window.currentTime = window.currentTime +1; 
+		 // seconds
+		  window.currentDeg_seconds = window.currentDeg_seconds + window.increase_seconds;
+		  	// update the css _seconds
+		  	$('.second').css('transform', 'rotate('+currentDeg_seconds+'deg)');
+		  	$('.second').css('-ms-transform', 'rotate('+currentDeg_seconds+'deg)');
+		  	$('.second').css('-webkit-transform', 'rotate('+currentDeg_seconds+'deg)');
+		  	$('.second').css('-moz-transform', 'rotate('+currentDeg_seconds+'deg)');
+		  	$('.second').css('-o-transform', 'rotate('+currentDeg_seconds+'deg)');
+			$('.dot').css('transform', 'rotate('+currentDeg_seconds+'deg)');
+			$('.dot').css('-ms-transform', 'rotate('+currentDeg_seconds+'deg)');
+			$('.dot').css('-webkit-transform', 'rotate('+currentDeg_seconds+'deg)');
+			$('.dot').css('-moz-transform', 'rotate('+currentDeg_seconds+'deg)');
+			$('.dot').css('-o-transform', 'rotate('+currentDeg_seconds+'deg)');
+		  	
+		  	// minute
+		  	  window.currentDeg_minute = window.currentDeg_minute + window.increase_minute;
+		  	  	// update the css _min
+		  	  	$('.minute').css('transform', 'rotate('+currentDeg_minute+'deg)');
+		  	  	$('.minute').css('-ms-transform', 'rotate('+currentDeg_minute+'deg)');
+		  	  	$('.minute').css('-webkit-transform', 'rotate('+currentDeg_minute+'deg)');
+		  	  	$('.minute').css('-moz-transform', 'rotate('+currentDeg_minute+'deg)');
+		  	  	$('.minute').css('-o-transform', 'rotate('+currentDeg_minute+'deg)');
+		  	  	
+		  	// hour
+		  	  window.currentDeg_hour = window.currentDeg_hour + window.increase_hour;
+		  	  
+		  	  	// update the css _hour
+		  	  	$('.hour').css('transform', 'rotate('+currentDeg_hour+'deg)');
+		  	  	$('.hour').css('-ms-transform', 'rotate('+currentDeg_hour+'deg)');
+		  	  	$('.hour').css('-webkit-transform', 'rotate('+currentDeg_hour+'deg)');
+		  	  	$('.hour').css('-moz-transform', 'rotate('+currentDeg_hour+'deg)');
+		  	  	$('.hour').css('-o-transform', 'rotate('+currentDeg_hour+'deg)');
+		  	  	
+		  	  	
+		  	
+		  }
+		  
+		  
+	  });
+	</script>
+</head>
+<body>
+	
+	<div id="theClock">
+		<div class="circle body"></div>
+		<div class="timeinclk">
+	<h1> <span class="time"></span></h1>
+	</div>
+		<ul class="numbers">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>10</li>
+			<li>11</li>
+			<li>12</li>
+		</ul>
+		<div class="hand hour"></div>
+		<div class="hand minute"></div>
+		<div class="hand second"></div>
+		<div class="circle dot"></div>
+	</div>
+</body>
+</html>
